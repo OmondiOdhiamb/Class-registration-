@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Brian Tech - Apply for Courses</title> 
+  <link rel="stylesheet" href="styles.css"> 
+ </head> 
+ <body> 
+  <header> 
+   <h1>Welcome to Brian Tech</h1> 
+   <p>Apply for Online Courses</p> 
+  </header> 
+  <div class="content"> 
+   <h2>Our Courses</h2> 
+   <ul class="course-list"> 
+    <li>Software Engineering</li> 
+    <li>Web Development</li> 
+    <li>Programming Languages</li> 
+    <li>Cyber Security</li> 
+    <li>Graphic Design</li> 
+   </ul> 
+   <h3>Apply Now</h3> 
+   <form id="applicationForm"> <label for="name">Full Name:</label> 
+    <input type="text" id="name" name="name" required> <label for="email">Email Address:</label> 
+    <input type="email" id="email" name="email" required> <label for="course">Select Course:</label> <select id="course" name="course" required> <option value="Software Engineering">Software Engineering</option> <option value="Web Development">Web Development</option> <option value="Programming Languages">Programming Languages</option> <option value="Cyber Security">Cyber Security</option> <option value="Graphic Design">Graphic Design</option> </select> <button type="submit">Apply</button> 
+   </form> 
+   <div id="confirmationMessage"></div> 
+  </div> 
+  <footer> 
+   <p>Website created by Brian Omondi Odhiambo</p> 
+  </footer> 
+  <script src="scripts.js"></script> 
+ </body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: background-color 1s ease;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.content {
+    padding: 20px;
+}
+
+.course-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-list li {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+form {
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+#confirmationMessage {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: green;
+}
+// Function to get a random color
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Function to change the background color
+function changeBackgroundColor() {
+    document.body.style.backgroundColor = getRandomColor();
+}
+
+// Set interval for changing background color every 3 seconds
+setInterval(changeBackgroundColor, 3000);
+
+// Handle form submission
+document.getElementById('applicationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const course = document.getElementById('course').value;
+
+    // Display confirmation message
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    confirmationMessage.textContent = `Thank you, ${name}! You have successfully applied for the ${course} course.`;
+});
